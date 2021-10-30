@@ -1,22 +1,23 @@
+template<typename T>
 class Vector{
     //Data Members
     int cs;//current size
     int ms;//maximum size
-    int *arr;//dynamic array variable(integer pointer variable)
+    T *arr;//dynamic array variable(T type pointer variable)
     public:
         //parameterized constructor
         Vector(int max_size=1){
             cs=0;
             ms=max_size;
-            arr= new int[ms];
+            arr= new T[ms];
         }
         void pushBack(int d){
             //Two Cases
             // Create a new array and delete the old one, double the capacity
             if(cs==ms){
-                int *oldArr= arr;
+                T *oldArr= arr;
                 ms=2*ms;
-                arr = new int[ms];
+                arr = new T[ms];
                 //copy the elements
                 for(int i=0; i<ms; i++){
                     arr[i]= oldArr[i];
@@ -33,11 +34,11 @@ class Vector{
             }
         }
         //first element of the array
-        int front(){
+        T front(){
             return arr[0];
         }
         //last element of the array
-        int back(){
+        T back(){
             return arr[cs-1];
         }
         //size taken by the array
@@ -49,7 +50,7 @@ class Vector{
             return ms;
         }
         //operator overloading
-        int operator[](int i){
+        T operator[](int i){
             return arr[i];
         }
 };
