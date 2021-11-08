@@ -7,3 +7,7 @@ int xoring(vector<int> v)
     for(auto x : v)  res ^= x;
     return res;
 }
+int main()
+{
+    return 0;
+}
