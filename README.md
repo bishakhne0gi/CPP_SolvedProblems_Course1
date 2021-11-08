@@ -1,3 +1,5 @@
-# This is a repository in which all the problems of the course named 
-# Data Structures & Algorithms Essentials using C++
-# are solved. This is a course by Prateek Narang in Coding Minutes. 
+# This repository has - 
+# 1. all the problems solved which is in the course. 
+# 2. all the algorithms and optimised code discussed in the course.
+# Name of the Course: Data Structures & Algorithms Essentials using C++ by Prateek Narang
+# Platform: CodingMinutes/ Udemy
