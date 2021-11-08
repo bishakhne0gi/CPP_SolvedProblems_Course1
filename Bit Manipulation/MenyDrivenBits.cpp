@@ -25,7 +25,6 @@ void clearLastIthBit(int &n, int i){
     n=n & mask;
     cout<<n<<endl;
 }
- 
 int main(){
     int n;
     cout<<"Enter the number: "<<endl;
