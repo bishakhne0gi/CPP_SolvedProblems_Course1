@@ -8,7 +8,6 @@ bool comp(pair<int,int> a, pair<int, int> b){
 }
 
 vector<pair<int,int>> sortCabs(vector<pair<int,int>> v){
-    // your code  goes here
     sort(v.begin(), v.end(), comp);
     return v;
 }
