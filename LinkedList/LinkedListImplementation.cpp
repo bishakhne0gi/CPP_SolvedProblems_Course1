@@ -104,6 +104,17 @@ class List
             } 
             return count; 
         } 
+        void pop_back()
+        {
+            int n=getCount(head);
+            Node *temp = head;
+            for(int jump=1; jump< n-1; jump++)
+            {
+                temp=temp->next;
+            }
+            temp->next=NULL;
+            tail=temp->next;
+        }
 };
 
 int main(){
@@ -111,8 +122,9 @@ int main(){
     l.push_front(30);
     l.push_front(20);
     l.push_back(15);
-    l.insert(10,1);
+    l.insert(10,0);
     l.pop_front();
+    l.pop_back();
     Node *head=l.begin();
     cout<<l.getCount(head);
     cout<<endl;
