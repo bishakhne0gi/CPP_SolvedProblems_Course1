@@ -93,7 +93,17 @@ class List
             temp->next=NULL;
             delete temp;
         }
-        
+        int getCount(Node* head) 
+        { 
+            int count = 0; 
+            Node* current = head; 
+            while (current != NULL) 
+            { 
+                count++; 
+                current = current->next; 
+            } 
+            return count; 
+        } 
 };
 
 int main(){
@@ -104,14 +114,19 @@ int main(){
     l.insert(10,1);
     l.pop_front();
     Node *head=l.begin();
+    cout<<l.getCount(head);
+    cout<<endl;
     while(head != NULL)
     {
         cout<<head->getData()<<"->";
         head=head->next;
     }
+    cout<<endl;
     int key;
     cin>>key;
     Node *k=l.begin();
     cout<<l.l_search(k,key)<<endl;
+
+    
     return 0;
 }
