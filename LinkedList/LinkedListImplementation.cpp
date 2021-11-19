@@ -124,6 +124,20 @@ class List
             }
             cout<<endl;
         }
+        void reverse()
+        {
+            Node * prev= NULL;
+            Node * current=head;
+            Node * temp;
+            while(current!=NULL)
+            {
+                temp=current->next;
+                current->next=prev;
+                prev=current;
+                current=temp;
+            }
+            head=prev;
+        }
 };
 
 int main(){
@@ -135,7 +149,7 @@ int main(){
     int pos;
     int key;
     do{
-        cout<<"1.Push Back 2.Push Front 3.Input at specific position 4.Pop Back 5.Pop Front 6.Traversal 7.Count no. of nodes 8.Search 9.Exit"<<endl;
+        cout<<"1.Push Back 2.Push Front 3.Input at specific position 4.Pop Back 5.Pop Front 6.Traversal 7.Count no. of nodes 8.Search 9.Reverse 10.Exit"<<endl;
         cout<<"Enter the choice: "<<endl;
         cin>>choice;
         switch(choice){
@@ -184,10 +198,14 @@ int main(){
             else
                 cout<<"Not found"<<endl;
             break;
+        case 9:
+          
+            l.reverse();
+            break;
         default:
             cout<<"Wrong Choice!"<<endl;
         }
-    }while(choice!=9);
+    }while(choice!=10);
     cout<<endl;
     return 0;
 }
