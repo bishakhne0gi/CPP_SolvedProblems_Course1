@@ -9,7 +9,7 @@ using namespace std;
 int binary(vector<int> arr, int l, int r, int x)
 {
     if (r >= l) {
-        int mid = l + (r - l) / 2;
+        int mid = l + r  / 2;
   
         // If the element is present at the middle
         // itself
