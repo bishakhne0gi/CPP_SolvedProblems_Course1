@@ -13,15 +13,29 @@ class Stack
             arr.pop_back();
 
         }
+        bool empty()
+        {
+            return arr.size()==0;
+        }
+        void insertAtBottom(int data)
+        {
+            //base case
+            if(empty())
+            {
+                return push(data);
+            }
+            //recursive case
+            int temp=top();
+            pop();
+            insertAtBottom(data);
+            push(temp);
+        }
         int top()
         {
             int n=arr.size();
             return arr[n-1];
         }
-        bool empty()
-        {
-            return arr.size()==0;
-        }
+       
         void display()
         {
             int i=arr.size()-1;
@@ -39,7 +53,7 @@ int main()
     int n;
     do
     {   
-        cout<<"Enter the choice: 1.Push 2.Top 3.Pop 4.Display";
+        cout<<"Enter the choice: 1.Push 2.Top 3.Pop 4.Display 5.InsertBottom";
         cout<<endl;
         cin>>choice;
         switch(choice)
@@ -61,9 +75,14 @@ int main()
                 s.display();
                 cout<<endl;
                 break;
+            case 5:
+                cout<<"Input at bottom: "<<endl;
+                cin>>n;
+                s.insertAtBottom(n);
+                break;
             default:
                 cout<<"Thank you!"<<endl;
         }
-    }while(choice!=5);
+    }while(choice!=6);
     return 0;
 }
