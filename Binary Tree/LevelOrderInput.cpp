@@ -8,6 +8,7 @@ class Node
         Node * right;
         Node(int d):data(d),left(NULL),right(NULL){}
 };
+//Input: 1 2 4 -1 -1 5 7 -1 -1 -1 3 -1 6 -1 -1 
 //build tree from levelorder input
 Node * levelOrderInput()
 {
