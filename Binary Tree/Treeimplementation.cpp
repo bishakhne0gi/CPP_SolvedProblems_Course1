@@ -44,6 +44,40 @@ void postOrderTraversal(Node * root)
     postOrderTraversal(root->right);
     cout<<root->data<<" ";
 }
+void levelOrderPrint(Node * root)
+{
+    queue <Node * > q;
+    q.push(root);
+    q.push(NULL);
+    while(!q.empty())
+    {
+        Node * temp = q.front();
+        if(temp==NULL)
+        {
+            cout<<endl;
+            q.pop();
+            if(!q.empty())
+            {
+                q.push(NULL);
+            }
+        }
+        else
+        {
+            q.pop();
+            cout<<temp->data<<" ";
+            if(temp->left)
+            {
+                q.push(temp->left);
+            }
+            if(temp->right)
+            {
+                q.push(temp->right);
+            }
+        }
+
+    }
+    return;
+}
 int main()
 {
     Node * root = buildTree();
@@ -55,5 +89,8 @@ int main()
     cout<<endl;
     cout<<"Post Order: "<<endl;
     postOrderTraversal(root);
+    cout<<endl;
+    cout<<"Level Order: "<<endl;
+    levelOrderPrint(root);
     return 0;
 }
