@@ -78,6 +78,14 @@ void levelOrderPrint(Node * root)
     }
     return;
 }
+int height(Node * root)
+{
+    if(root==NULL)
+        return 0;
+    int h1=height(root->left);
+    int h2=height(root->right);
+    return 1+max(h1,h2);
+}
 int main()
 {
     Node * root = buildTree();
@@ -92,5 +100,9 @@ int main()
     cout<<endl;
     cout<<"Level Order: "<<endl;
     levelOrderPrint(root);
+    cout<<endl;
+    cout<<"Height of the binary tree: "<<height(root)<<endl;
+    cout<<endl;
     return 0;
+
 }
