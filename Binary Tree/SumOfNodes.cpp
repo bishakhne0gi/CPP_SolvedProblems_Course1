@@ -22,4 +22,3 @@ int sumBT(Node* root)
     }
     return res;
 }
-© 2021 Gi
