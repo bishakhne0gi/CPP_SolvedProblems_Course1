@@ -86,6 +86,15 @@ int height(Node * root)
     int h2=height(root->right);
     return 1+max(h1,h2);
 }
+int diam(Node * root)
+{
+    if(root==NULL)
+        return 0;
+    int d1=height(root->left)+ height(root->right);
+    int d2=diam(root->left);
+    int d3=diam(root->right);
+    return max(d1,max(d2,d3));
+}
 int main()
 {
     Node * root = buildTree();
@@ -103,6 +112,7 @@ int main()
     cout<<endl;
     cout<<"Height of the binary tree: "<<height(root)<<endl;
     cout<<endl;
+    cout<<"Diameter is: "<<diam(root)<<endl;
     return 0;
 
 }
