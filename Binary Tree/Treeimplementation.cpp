@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+// 1 2 4 -1 -1 5 7 -1 -1 -1 3 -1 6 -1 -1 
 class Node
 {
     public:
@@ -7,6 +8,12 @@ class Node
         Node * left;
         Node * right;
         Node(int d):data(d),left(NULL),right(NULL){}
+};
+class Pair
+{
+    public:
+        int height;
+        int diameter;
 };
 //build tree pre-order
 Node * buildTree()
@@ -95,6 +102,27 @@ int diam(Node * root)
     int d3=diam(root->right);
     return max(d1,max(d2,d3));
 }
+Pair optDiam(Node *root)
+{
+    Pair p;
+    if(root==NULL)
+    {
+        p.height=p.diameter=0;
+        return p;
+    }
+    Pair Left=optDiam(root->left);
+    Pair Right=optDiam(root->right);
+    p.height=max(Left.height,Right.height)+1;
+
+    int d1=Left.height+Right.height;
+    int d2=Left.diameter;
+    int d3=Right.diameter;
+    
+    p.diameter=max(d1,max(d2,d3));
+    return p;
+
+
+} 
 int main()
 {
     Node * root = buildTree();
@@ -113,6 +141,8 @@ int main()
     cout<<"Height of the binary tree: "<<height(root)<<endl;
     cout<<endl;
     cout<<"Diameter is: "<<diam(root)<<endl;
+    cout<<endl;
+    cout<<"Optimised Diameter is: "<<optDiam(root).diameter<<endl;
     return 0;
 
 }
