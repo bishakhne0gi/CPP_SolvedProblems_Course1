@@ -114,6 +114,25 @@ Node * remove(Node * root, int key)
     return root;    
 
 }
+void printRange(Node * root, int k1, int k2)
+{
+    if(root==NULL)
+     return;
+    if(root->key >=k1 && root->key<=k2)
+    {
+        printRange(root->left,k1,k2);
+        cout<<root->key<<" ";
+        printRange(root->right,k1,k2);
+    }
+    else if(root->key > k2)
+    {
+        printRange(root->left, k1, k2);
+    }
+    else{
+        //root->key < k1
+        printRange(root->right,k1,k2);
+    }
+}
 int main()
 {
     Node * root= NULL;
@@ -141,6 +160,10 @@ int main()
     root=remove(root,key);
     cout<<"In Order: "<<endl;
     inOrderTravesal(root);
+    cout<<"Range: ";
+    int k1,k2;
+    cin>>k1>>k2;
+    printRange(root,k1,k2);
     return 0;
 
 }
