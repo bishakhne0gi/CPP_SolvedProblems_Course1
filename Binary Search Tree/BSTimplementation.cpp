@@ -66,6 +66,54 @@ bool search(Node * root, int key)
     }
     return search(root->right, key);
 }
+Node * findMin(Node * root)
+{
+    while(root->left !=NULL)
+        root=root->left;
+    return root;
+}
+Node * remove(Node * root, int key)
+{
+    if(root== NULL)
+        return NULL;
+    else if(key<root->key)
+        root->left=remove(root->left,key);
+    else if(key>root->key)
+         root->left=remove(root->left,key);
+    else
+    {
+        //when current node matches with the key
+        //case 1: with no children
+        if(root->left == NULL && root->right==NULL)
+        {
+            delete root;
+            root=NULL;
+        }
+        //case 2: with one children
+        else if(root->left == NULL)
+        {
+            Node * temp=root;
+            root=root->right;
+            delete temp;
+        }
+        else if(root->right == NULL)
+        {
+            Node * temp=root;
+            root=root->left;
+            delete temp;
+        }
+        //case 3: with 2 children
+        else{
+            Node * temp= findMin(root->right);
+            root->key=temp->key;
+            root->right=remove(root->right,temp->key);
+        }
+
+
+    }
+    return root;    
+
+}
 int main()
 {
     Node * root= NULL;
@@ -86,7 +134,13 @@ int main()
     cout<<"Search: "<<endl;
     cout<<search(root,6);
     cout<<endl;
-    
+    cout<<"Deletion: "<<endl;
+    cout<<"Enter the key: "<<endl;
+    int key;
+    cin>>key;
+    root=remove(root,key);
+    cout<<"In Order: "<<endl;
+    inOrderTravesal(root);
     return 0;
 
 }
