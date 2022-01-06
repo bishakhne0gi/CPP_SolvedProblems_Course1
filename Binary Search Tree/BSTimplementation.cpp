@@ -52,6 +52,20 @@ void postOrderTravesal(Node * root)
     cout<<root->key<<" ";
 
 }
+bool search(Node * root, int key)
+{
+    if(root==NULL)
+        return false;
+    if(root->key==key)
+    {
+        return true;
+    }
+    if(key<root->key)
+    {
+        return search(root->left, key);
+    }
+    return search(root->right, key);
+}
 int main()
 {
     Node * root= NULL;
@@ -68,6 +82,9 @@ int main()
     cout<<endl;
     cout<<"Post Order: "<<endl;
     postOrderTravesal(root);
+    cout<<endl;
+    cout<<"Search: "<<endl;
+    cout<<search(root,6);
     cout<<endl;
     
     return 0;
