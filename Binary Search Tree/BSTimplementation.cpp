@@ -135,8 +135,9 @@ void printRange(Node * root, int k1, int k2)
 }
 int main()
 {
+    //8,3,10,1,6,14,4,7,13
     Node * root= NULL;
-    vector<int> arr= {8,3,10,1,6,14,4,7,13};
+    vector<int> arr= {8,3,10};
     for(int x: arr)
     {
         root=buildTree(root,x);
