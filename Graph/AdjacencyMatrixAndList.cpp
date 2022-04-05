@@ -51,7 +51,6 @@ int main()
     }
      adjList(v, e, p);
      adjMatrix(v, e, p);
-
    
     return 0;
 }
