@@ -12,6 +12,10 @@ class Vector{
             ms=max_size;
             arr= new int[ms];
         }
+        bool empty()
+        {
+            return cs==0;
+        }
         void pushBack(int d){
             //Two Cases
             // Create a new array and delete the old one, double the capacity
@@ -30,17 +34,22 @@ class Vector{
         }
         //delete element from the end of the array
         void popBack(){
-            if(cs>=0){
+            if(cs>0){
                 cs--;
             }
         }
         //first element of the array
         int front(){
-            return arr[0];
+            if(!empty())
+                return arr[0];
+            return 0;    
+
         }
         //last element of the array
         int back(){
-            return arr[cs-1];
+             if(!empty())
+                return arr[cs-1];
+            return 0; 
         }
         //size taken by the array
         int size(){
@@ -58,10 +67,9 @@ class Vector{
 int main(){
     Vector v;
     int choice;
-    cout<<"1.Push 2.Pop 3.Size 4.Capacity 5.Print 6.Exit"<<endl;
-    
     do{
         cout<<"Enter the choice: "<<endl;
+         cout<<"1.Push 2.Pop 3.Size 4.Capacity 5.Print 6.Front Element 7.Back Element 8.Exit"<<endl;
         cin>>choice;
         switch(choice){
             case 1: 
@@ -84,9 +92,15 @@ int main(){
                         cout<<v[i]<<" "<<endl;
                     }
                     break;
+            case 6:
+                    cout<<"Front element: "<<v.front()<<endl;
+                    break;
+            case 7:
+                     cout<<"Last element: "<<v.back()<<endl;
+                    break;
             default:
                     cout<<"Enter correct choice"<<endl;
         }
-    }while(choice!=6);
+    }while(choice!=8);
     return 0;
 }
