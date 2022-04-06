@@ -35,11 +35,15 @@ class Vector{
         }
         //first element of the array
         T front(){
-            return arr[0];
+            if(!empty())
+                return arr[0];
+            return 0;
         }
         //last element of the array
         T back(){
-            return arr[cs-1];
+           if(!empty())
+                return arr[cs-1];
+            return 0; 
         }
         //size taken by the array
         int size(){
