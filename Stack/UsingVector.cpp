@@ -8,15 +8,16 @@ class Stack
         {
             arr.push_back(data);
         }
-        void pop()
-        {
-            arr.pop_back();
-
-        }
-        bool empty()
+         bool empty()
         {
             return arr.size()==0;
         }
+        void pop()
+        {
+            if(!empty())
+                arr.pop_back(); 
+        }
+       
         void insertAtBottom(int data)
         {
             //base case
@@ -33,7 +34,9 @@ class Stack
         int top()
         {
             int n=arr.size();
-            return arr[n-1];
+            if(!empty())
+                return arr[n-1];
+            return 0;
         }
        
         void display()
