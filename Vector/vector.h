@@ -29,7 +29,7 @@ class Vector{
         }
         //delete element from the end of the array
         void popBack(){
-            if(cs>=0){
+            if(cs>0){
                 cs--;
             }
         }
@@ -56,5 +56,14 @@ class Vector{
         //operator overloading
         T operator[](int i){
             return arr[i];
+        }
+        void display()
+        {
+            int i=arr.size()-1;
+            while(i>=0)
+            {
+              cout<<arr[i]<<endl;
+              i--;
+            }
         }
 };
