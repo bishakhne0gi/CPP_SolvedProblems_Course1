@@ -52,16 +52,30 @@ class Graph
 };
 int main()
 {
-    Graph g(6);
-    g.addEdge(0,1,7);
-    g.addEdge(0,3,8);
-    g.addEdge(1,3,3);
-    g.addEdge(1,2,6);
-    g.addEdge(3,2,4);
-    g.addEdge(3,4,3);
-    g.addEdge(2,4,2);
-    g.addEdge(2,5,5);
-    g.addEdge(4,5,2);
+      cout<<"Enter the no. of vertices: "<<endl;
+    int v;
+    cin>>v;
+    Graph g(v);
+    cout<<"Enter the no. of edges: "<<endl;
+    int e;
+    cin>>e;
+    cout<<"INITIAL FINAL WEIGHT"<<endl;
+    for(int i=1; i<=e; i++)
+    {
+        int u, fin, w;
+        cin>>u>>fin>>w;
+        g.addEdge(u,fin,w);
+    }
+    // Graph g(6);
+    // g.addEdge(0,1,7);
+    // g.addEdge(0,3,8);
+    // g.addEdge(1,3,3);
+    // g.addEdge(1,2,6);
+    // g.addEdge(3,2,4);
+    // g.addEdge(3,4,3);
+    // g.addEdge(2,4,2);
+    // g.addEdge(2,5,5);
+    // g.addEdge(4,5,2);
     cout<<"COST OF MINIMUM SPANNING TREE: "<<endl;
     cout<<g.prim_mst()<<endl;
     return 0;
