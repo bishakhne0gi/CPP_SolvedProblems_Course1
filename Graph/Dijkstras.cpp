@@ -46,20 +46,39 @@ class Graph
         }
         for(int i=0; i<V; i++)
         {
-            cout<<"Node i "<<i<<" Dist "<<distance[i]<<endl;
+            cout<<"Node  "<<i<<"is at Dist "<<distance[i]<<endl;
         }
         return distance[dest];
     }
 };
 int main()
 {
-    Graph g(5);
-    g.addEdge(0,1,1);
-    g.addEdge(1,2,1);
-    g.addEdge(0,2,4);
-    g.addEdge(0,3,7);
-    g.addEdge(2,3,2);
-    g.addEdge(3,4,3);
-    cout<<g.dikstra(0,4)<<endl;
+    cout<<"Enter the no. of vertices: "<<endl;
+    int v;
+    cin>>v;
+    Graph g(v);
+    cout<<"Enter the no. of edges: "<<endl;
+    int e;
+    cin>>e;
+    cout<<"INITIAL FINAL WEIGHT"<<endl;
+    for(int i=1; i<=e; i++)
+    {
+        int u, fin, w;
+        cin>>u>>fin>>w;
+        g.addEdge(u,fin,w);
+    }
+    // g.addEdge(0,1,1);
+    // g.addEdge(1,2,1);
+    // g.addEdge(0,2,4);
+    // g.addEdge(0,3,7);
+    // g.addEdge(2,3,2);
+    // g.addEdge(3,4,3);
+    cout<<"Source: "<<endl;
+    int source;
+    cin>>source;
+    cout<<"Destination: "<<endl;
+    int dest;
+    cin>>dest;
+    cout<<g.dikstra(source,dest)<<endl;
     return 0;
 }
