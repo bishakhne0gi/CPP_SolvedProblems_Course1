@@ -49,12 +49,23 @@ class Graph
 };
 int main()
 {
-    Graph g(3,3);
-    g.addEdge(1,2,3);
-    g.addEdge(2,3,4);
-    g.addEdge(1,3,-10);
-    vector<int> path= g.bellmanford(3,1);
-    for(int i=1; i<=3; i++)
+    int v;
+    int e;
+    cout<<"Enter the number of vertices: "<<endl;
+    cin>>v;
+    cout<<"Enter the number of edges: "<<endl;
+    cin>>e;
+    Graph g(v+1,e);
+    cout<<"Initial Final Weight"<<endl;
+    for(int i=0; i<e; i++)
+    {
+        int u,fin,w;
+        cin>>u>>fin>>w;
+        g.addEdge(u,fin,w);
+    }
+    vector<int> path= g.bellmanford(v,1);
+    cout<<"SOURCE NODE: "<<1<<endl;
+    for(int i=1; i<=v; i++)
     {
         cout<<"NODE "<<i<<" is at dist "<<path[i]<<endl;
     }
