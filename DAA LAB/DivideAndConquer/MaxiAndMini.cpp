@@ -31,9 +31,9 @@ void maximini(int left, int right)
             temp_maxi = maxi;
             temp_mini = mini;
             maximini(mid + 1, right);
-            if (maxi < temp_maxi)
+            if (temp_maxi > maxi)
                 maxi = temp_maxi;
-            if (mini > temp_mini)
+            if (temp_mini < mini)
                 mini = temp_mini;
         }
     }
@@ -50,7 +50,7 @@ int main()
     maxi = a[0];
     mini = a[0];
     maximini(0, n - 1);
-    cout << "mini: " << mini << endl;
-    cout << "maxi: " << maxi << endl;
+    cout << "MINIMUM: " << mini << endl;
+    cout << "MAXIMUM: " << maxi << endl;
     return 0;
 }
