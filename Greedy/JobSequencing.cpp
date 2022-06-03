@@ -39,8 +39,6 @@ void jobSequencing(char id[], int deadline[], int profit[], int n)
     cout<<"MAX PROFIT: "<<endl;
     cout<<maxProfit<<endl;
 }
-
-
 int main()
 {
     // int deadline[7];
