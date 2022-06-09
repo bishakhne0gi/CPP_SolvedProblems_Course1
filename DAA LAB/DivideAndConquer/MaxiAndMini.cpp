@@ -1,3 +1,14 @@
+/*
+    If the array is sorted
+    TC: O(log n)
+    SC: o(n) stack space will be needed
+
+    If the array is not sorted
+    TC: O(n)
+    SC: O(n)
+*/
+
+
 #include <bits/stdc++.h>
 using namespace std;
 int maxi, mini;
