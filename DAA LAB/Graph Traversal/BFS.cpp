@@ -1,5 +1,9 @@
 /*
+    Using adjacency list
     TC: O(V+E) v-number of vertices, e-number of edge
+    Using adjacecny matrix
+    TC: O(v2)
+    
     SC: O(V) v-numbe of vertices
 */
 
