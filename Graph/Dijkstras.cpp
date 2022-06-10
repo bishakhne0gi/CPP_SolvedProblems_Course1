@@ -18,28 +18,23 @@ class Graph
     int dikstra(int src, int dest)
     {
         vector<int> distance(V,INT_MAX);
-        set<pair<int,int>> s;
+         priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> Q;
         distance[src]=0;
-        s.insert({0,src});
-        while(!s.empty())
+        Q.push({0,src});
+        while(!Q.empty())
         {
-            auto it= s.begin();
-            int node= it->second;
-            int distTillNow= it->first;
-            s.erase(it);
+            auto it= Q.top();
+            int node= it.second;
+            int distTillNow= it.first;
+            Q.pop();
             for(auto nbrPair: l[node])
             {
                 int nbr= nbrPair.second;
                 int currentEdge= nbrPair.first;
                 if(distTillNow+ currentEdge < distance[nbr])
                 {
-                    auto f =s.find({distance[nbr],nbr});
-                    if(f!=s.end())
-                    {
-                        s.erase(f);
-                    }
                     distance[nbr]= distTillNow+ currentEdge;
-                    s.insert({distance[nbr],nbr});
+                    Q.push({distance[nbr],nbr});
                 }        
 
             }
@@ -67,18 +62,23 @@ int main()
         cin>>u>>fin>>w;
         g.addEdge(u,fin,w);
     }
-    // g.addEdge(0,1,1);
-    // g.addEdge(1,2,1);
-    // g.addEdge(0,2,4);
-    // g.addEdge(0,3,7);
-    // g.addEdge(2,3,2);
+    // g.addEdge(0,1,7);
+    // g.addEdge(0,3,8);
+    // g.addEdge(1,3,3);
+    // g.addEdge(1,2,6);
+    // g.addEdge(3,2,4);
     // g.addEdge(3,4,3);
+    // g.addEdge(2,4,2);
+    // g.addEdge(2,5,5);
+    // g.addEdge(4,5,2);
     cout<<"Source: "<<endl;
     int source;
     cin>>source;
     cout<<"Destination: "<<endl;
     int dest;
     cin>>dest;
+    // source: 0, dest: 5
     cout<<g.dikstra(source,dest)<<endl;
+    //ANS: 13
     return 0;
 }

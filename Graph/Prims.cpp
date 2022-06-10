@@ -78,5 +78,6 @@ int main()
     // g.addEdge(4,5,2);
     cout<<"COST OF MINIMUM SPANNING TREE: "<<endl;
     cout<<g.prim_mst()<<endl;
+    //ANS: 17
     return 0;
 }
