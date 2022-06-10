@@ -1,3 +1,8 @@
+/*
+    TC: O(v2) v- number of vertices
+    SC: O(v)  v-number of vertices in priority queue
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 class Graph
