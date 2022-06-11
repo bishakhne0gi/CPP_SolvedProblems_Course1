@@ -106,23 +106,12 @@ class Graph
                     ans+=w;
                 }
             }
-            // for(auto edge: edgelist)
-            // {
-            //     int w= edge[0];
-            //     int x= edge[1];
-            //     int y= edge[2];
-            //     if(s.find(x)!=s.find(y))
-            //     {
-            //         s.unite(x,y);
-            //         ans+=w;
-            //     }
-            // }
             return ans;
         }
 };
 int main()
 {
-      cout<<"Enter the no. of vertices: "<<endl;
+    cout<<"Enter the no. of vertices: "<<endl;
     int v;
     cin>>v;
     Graph g(v);
