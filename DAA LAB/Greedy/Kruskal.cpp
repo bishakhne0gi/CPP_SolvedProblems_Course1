@@ -1,3 +1,8 @@
+/*
+    The graph may be disconnected
+    TC: O(e log v) v- number of vertices, e- number of edges
+    SC: O(log e)  v-number of edges, array for union-find of size e
+*/
 #include <bits/stdc++.h>
 using namespace std;
 #include <bits/stdc++.h>

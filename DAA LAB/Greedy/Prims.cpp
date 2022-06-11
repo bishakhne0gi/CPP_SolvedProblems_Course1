@@ -1,4 +1,5 @@
 /*
+    The graph must be connected
     TC: O(v2) v- number of vertices
     SC: O(v)  v-number of vertices in priority queue
 */
