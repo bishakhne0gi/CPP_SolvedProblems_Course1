@@ -4,6 +4,80 @@
 */
 #include<bits/stdc++.h>
 using namespace std;
+class Vector{
+    //Data Members
+    int cs;//current size
+    int ms;//maximum size
+    int *arr;//dynamic array variable(integer pointer variable)
+    public:
+        //parameterized constructor
+        Vector(int max_size=1){
+            cs=0;
+            ms=max_size;
+            arr= new int[ms];
+        }
+        bool empty()
+        {
+            return cs==0;
+        }
+        void pushBack(int d){
+            //Two Cases
+            // Create a new array and delete the old one, double the capacity
+            if(cs==ms){
+                int *oldArr= arr;
+                ms=2*ms;
+                arr = new int[ms];
+                //copy the elements
+                for(int i=0; i<ms; i++){
+                    arr[i]= oldArr[i];
+                }
+                delete [] oldArr;
+            }
+            arr[cs]=d;
+            cs++;
+        }
+        //delete element from the end of the array
+        void popBack(){
+            if(cs>0){
+                cs--;
+            }
+        }
+        //first element of the array
+        int front(){
+            if(!empty())
+                return arr[0];
+            return 0;    
+
+        }
+        //last element of the array
+        int back(){
+             if(!empty())
+                return arr[cs-1];
+            return 0; 
+        }
+        //size taken by the array
+        int size(){
+            return cs;
+        }
+        //maximum capacity of array
+        int capacity(){
+            return ms;
+        }
+        //operator overloading
+        int operator[](int i){
+            return arr[i];
+        }
+};
+class Pair
+{
+    int a,b;
+    public:
+    Pair(int m, int n)
+    {
+        a=m;
+        b=n;
+    }
+};
 class Graph
 {
     vector<pair<int,int>> *l;

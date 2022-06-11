@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+#include <bits/stdc++.h>
+using namespace std;
 class DSU
 {
     int *parent;
@@ -45,7 +47,8 @@ class DSU
 };
 class Graph
 {
-    vector<vector<int>> edgelist;
+    int edgelist[20][3];
+    int i=0;
     int V;
     public:
         Graph(int v)
@@ -54,26 +57,61 @@ class Graph
         }
         void addEdge(int x, int y, int w)
         {
-            edgelist.push_back({w,x,y});
+            edgelist[i][0]=w;
+            edgelist[i][1]=x;
+            edgelist[i][2]=y;
+            i++;
         }
-        int kruskal_mst()
+        int kruskal_mst(int e)
         {
             //sort all the edges based on weight
-            sort(edgelist.begin(), edgelist.end());
+            // sort(edgelist.begin(), edgelist.end());
+            int temp_w=0, temp_x=0, temp_y=0;
+            for(int i=0; i<e; i++)
+            {
+                for(int j=i+1; j<e; j++)
+                {
+                    if(edgelist[i][0]>edgelist[j][0])
+                    {
+                        temp_w= edgelist[j][0];
+                        edgelist[j][0]=edgelist[i][0];
+                        edgelist[i][0]=temp_w;
+
+                        temp_x= edgelist[j][1];
+                        edgelist[j][1]=edgelist[i][1];
+                        edgelist[i][1]=temp_x;
+
+                        temp_y= edgelist[j][2];
+                        edgelist[j][2]=edgelist[i][2];
+                        edgelist[i][2]=temp_y;
+                    }
+                }
+            }
             //initialise DSU
             DSU s(V);
             int ans=0;
-            for(auto edge: edgelist)
+            for(int i=0; i<e; i++)
             {
-                int w= edge[0];
-                int x= edge[1];
-                int y= edge[2];
+                int w=edgelist[i][0];
+                int x= edgelist[i][1];
+                int y= edgelist[i][2];
                 if(s.find(x)!=s.find(y))
                 {
                     s.unite(x,y);
                     ans+=w;
                 }
             }
+            // for(auto edge: edgelist)
+            // {
+            //     int w= edge[0];
+            //     int x= edge[1];
+            //     int y= edge[2];
+            //     if(s.find(x)!=s.find(y))
+            //     {
+            //         s.unite(x,y);
+            //         ans+=w;
+            //     }
+            // }
             return ans;
         }
 };
@@ -103,6 +141,6 @@ int main()
     // g.addEdge(2,5,5);
     // g.addEdge(4,5,2);
     cout<<"COST OF MINIMUM SPANNING TREE: "<<endl;
-    cout<<g.kruskal_mst()<<endl;
+    cout<<g.kruskal_mst(e)<<endl;
     return 0;
 }
