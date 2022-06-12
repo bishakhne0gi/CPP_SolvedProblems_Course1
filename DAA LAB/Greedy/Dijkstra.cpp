@@ -24,39 +24,41 @@ void printSolution(int dist[], int m)
 		cout << char(i + 65) << " \t\t" << dist[i] << endl;
 }
 
-void dijkstra(int graph[20][20], int src, int m)
+void dijkstra(int graph[20][20], int src, int n)
 {
 	int dist[20];
 	bool sptSet[20];
 
-	for (int i = 0; i < m; i++)
+	for (int i = 0; i < n; i++)
 	{
-		dist[i] = INT_MAX, sptSet[i] = false;
+		dist[i] = INT_MAX;
+		sptSet[i] = false;
 	}
 	dist[src] = 0;
 
-	for (int count = 0; count < m - 1; count++)
+	for (int i = 0; i < n- 1; i++)
 	{
 		int mini = INT_MAX, u;
 
-		for (int v = 0; v < m; v++)
+		for (int j = 0; j < n; j++)
 		{
-			if (sptSet[v] == false && dist[v] <= mini)
+			if (sptSet[j] == false && dist[j] < mini)
 			{
-				mini = dist[v], u = v;
+				mini = dist[j];
+				u = j;
 			}
 		}
 		sptSet[u] = true;
-		for (int v = 0; v < m; v++)
+		for (int k = 0; k < n; k++)
 		{
-			if (graph[u][v] && sptSet[v] == false && dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v])
+			if (graph[u][k] && sptSet[k] == false && dist[u] != INT_MAX && dist[u] + graph[u][k] < dist[k])
 			{
 
-				dist[v] = dist[u] + graph[u][v];
+				dist[k] = dist[u] + graph[u][k];
 			}
 		}
 	}
-	printSolution(dist, m);
+	printSolution(dist, n);
 }
 
 int main()
@@ -68,20 +70,20 @@ int main()
 	{
 		printf("\n Cannot open file");
 	}
-	int x, m;
+	int x, n;
 	int graph[20][20];
-	fscanf(fp, "%d", &m);
+	fscanf(fp, "%d", &n);
 
-	for (int i = 0; i < m; i++)
+	for (int i = 0; i < n; i++)
 	{
-		for (int j = 0; j < m; j++)
+		for (int j = 0; j < n; j++)
 		{
 			fscanf(fp, "%d", &x);
 			graph[i][j] = x;
 		}
 	}
 
-	dijkstra(graph, 0, m);
+	dijkstra(graph, 0, n);
 
 	return 0;
 }
