@@ -10,16 +10,16 @@ int graph[20][20];
 bool visited[20]={false};
 char s[20];
 int top = -1;
-void pushFunc(char v)
+void pushFunc(int n, char x)
 {
-    if (top == 20-1)
+    if (top == n-1)
     {
         cout<<"The stack is overflowing."<<endl;
     }
     else
     {
         top ++ ;
-        s[top] = v;
+        s[top] = x;
     }
 }
 void popFunc()
@@ -38,7 +38,7 @@ void DFS(int n)
     visited[0] = true;
     int v = 0;
     char u;
-    pushFunc(v + 65);
+    pushFunc(n,v + 65);
     cout<<"The DFS traversal of the graph is : "<<endl;   
      while (top != -1)
     {
@@ -51,7 +51,7 @@ void DFS(int n)
             {
                 if (visited[i] == false)
                 {
-                    pushFunc(i + 65);
+                    pushFunc(n,i + 65);
                     visited[i] = true;
                 }
             }
