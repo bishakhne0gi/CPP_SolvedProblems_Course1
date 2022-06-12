@@ -9,7 +9,7 @@ void jobSequencing(char id[], int deadline[], int profit[], int n)
 {
     char result[7];
     int maximum_deadline=deadline[0];
-    for(int i=1; i<7; i++)
+    for(int i=1; i<n; i++)
     {
         maximum_deadline=max(maximum_deadline,deadline[i]);
     }
@@ -58,23 +58,17 @@ int main()
     cout<<"Enter the ids: "<<endl;
     for(int i=0; i<n; i++)
     {
-        char z;
-        cin>>z;
-        id[i]=z;
+        cin>>id[i];
     }
     cout<<"Enter the deadlines: "<<endl;
     for(int i=0; i<n; i++)
     {
-        int z;
-        cin>>z;
-        deadline[i]=z;
+       cin>>deadline[i];
     }
     cout<<"Enter the profits: "<<endl;
     for(int i=0; i<n; i++)
     {
-        int z;
-        cin>>z;
-        profit[i]=z;
+       cin>>profit[i];
     }
     cout << "IDS: " << endl;
     for (int i = 0; i < n; i++)
@@ -123,19 +117,19 @@ int main()
     cout<<"AFTER SORTING THE PROFITS: "<<endl;
 
     cout << "IDS: " << endl;
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < n; i++)
     {
         cout << id[i] << " ";
     }
     cout << endl;
     cout << "DEADLINES: " << endl;
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < n; i++)
     {
         cout << deadline[i] << " ";
     }
     cout << endl;
     cout << "PROFITS: " << endl;
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < n; i++)
     {
         cout << profit[i] << " ";
     }
