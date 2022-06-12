@@ -80,7 +80,7 @@ int main()
     {
         cout<<" Error opening \n"<<endl;
     }
-    int n, x;
+    int n;
     fscanf(fp, "%d", &n);
     for (int i = 0; i < n; i ++)
     {
