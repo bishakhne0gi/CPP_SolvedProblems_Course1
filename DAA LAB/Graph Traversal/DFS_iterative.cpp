@@ -1,66 +1,52 @@
 /*
     Using adjacency list
     TC: O(V+E) v-number of vertices, e-number of edge
-    Using adjacecny matrix
-    TC: O(v2)
     
-    SC: O(V) v-numbe of vertices
+    SC: O(V) v-visited array space of size v 
 */
 #include <bits/stdc++.h>
 using namespace std;
 int graph[20][20];
 bool visited[20];
-char q[20];
-int rear = -1, front = -1;
-void enqueFunc(int n, char x)
+char s[20];
+int top = -1;
+void pushFunc(char v)
 {
-    if (rear == -1 && front == -1)
+    if (top == 20-1)
     {
-        rear ++;
-        front ++;
-        q[rear] = x;
-    }
-    else if (rear == n-1)
-    {
-        cout<<"The queue is overflowing."<<endl;
+        cout<<"The stack is overflowing."<<endl;
     }
     else
     {
-        rear ++;
-        q[rear] = x;
+        top ++ ;
+        s[top] = v;
     }
 }
-void dequeFunc(int n)
+void popFunc()
 {
-    if (rear == -1 && front == -1)
+    if (top == -1)
     {
-        cout<<"The queue is underflowing."<<endl;
-    }
-    else if (rear == front)
-    {
-        rear = -1;
-        front = -1;
+        cout<<"The stack is underflowing."<<endl;
     }
     else
     {
-        front ++;
+        top --;
     }
 }
-void BFS (int n)
+void DFS(int n)
 {
     for (int i = 0; i < n; i++)
     {
-        visited[i] = false;
+        visited[i] = 0;
     }
     int v = 0;
     char u;
-    enqueFunc(n, v+65);
+    pushFunc(v + 65);
     visited[v] = true;
-    cout<<"The BFS traversal of the graph is : "<<endl;
-    while ((rear != -1 && front != -1) || front < rear)
+    cout<<"The DFS traversal of the graph is : "<<endl;    while (top != -1)
     {
-        u = q[front];
-        dequeFunc(n);
+        u = s[top];
+        popFunc();
         cout<<u<<"\t"<<endl;
         for (int i = 0; i < n; i ++)
         {
@@ -68,14 +54,13 @@ void BFS (int n)
             {
                 if (visited[i] == false)
                 {
-                    enqueFunc(n, i+65);
+                    pushFunc(i + 65);
                     visited[i] = true;
                 }
             }
         }
     }
 }
-
 void print(int n)
 {
     cout<<"The graph is: "<<endl;
@@ -94,7 +79,6 @@ int main()
     if (fp == NULL)
     {
         cout<<" Error opening \n"<<endl;
-        exit(0);
     }
     int n, x;
     fscanf(fp, "%d", &n);
@@ -106,6 +90,6 @@ int main()
         }
     }
     print(n);
-    BFS (n);
+    DFS (n);
     return 0;
 }
