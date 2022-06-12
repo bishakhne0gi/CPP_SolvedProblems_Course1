@@ -5,7 +5,19 @@
 */
 #include <bits/stdc++.h>
 using namespace std;
-void print(int parent[], int graph[20][20], int m)
+void print(int graph[20][20], int n)
+{
+    cout << "The graph is" << endl;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            cout << "\t" << graph[i][j];
+        }
+        cout << endl;
+    }
+}
+void printPrims(int parent[], int graph[20][20], int m)
 {
 	int sum = 0;
 	cout << "PRIMS ALGORITHM"<<endl;
@@ -19,14 +31,14 @@ void print(int parent[], int graph[20][20], int m)
 	cout << "MINIMUM COST: " << sum << endl;
 }
 
-void prims(int graph[20][20], int m)
+void prims(int graph[20][20], int n)
 {
 
 	int parent[20];
 	int key[20];
 	bool mstset[20];
-	//Initalising the arrays
-	for (int i = 0; i < m; i++)
+	// Initalising the arrays
+	for (int i = 0; i < n; i++)
 	{
 		key[i] = INT_MAX, mstset[i] = false, parent[i] = -1;
 	}
@@ -36,11 +48,11 @@ void prims(int graph[20][20], int m)
 
 	// minkey function
 	//Traversing m-1 edges
-	for (int i = 0; i < m - 1; i++)
+	for (int i = 0; i < n - 1; i++)
 	{
 		int mini = INT_MAX, u;
 
-		for (int i = 0; i < m; i++)
+		for (int i = 0; i < n; i++)
 		{
 			if (mstset[i] == false && key[i] < mini)
 			{
@@ -49,16 +61,17 @@ void prims(int graph[20][20], int m)
 		}
 		mstset[u] = true;
 
-		for (int v = 0; v < m; v++)
+		for (int k= 0; k < n; k++)
 		{
-			if (graph[u][v] && mstset[v] == false && graph[u][v] < key[v])
+			if (graph[u][k] && mstset[k] == false && graph[u][k] < key[k])
 			{
-				parent[v] = u, key[v] = graph[u][v];	
+				parent[k] = u;
+				key[k] = graph[u][k];	
 			}
 		}
 	}
 	// print the graph with minimum weights
-	print(parent, graph, m);
+	printPrims(parent, graph, n);
 }
 
 int main()
@@ -68,17 +81,18 @@ int main()
 	{
 		cout<<"Cannot open file"<<endl;
 	}
-	int x, m;
+	int x, n;
 	int graph[20][20];
-	fscanf(fp, "%d", &m);
+	fscanf(fp, "%d", &n);
 
-	for (int i = 0; i < m; i++)
+	for (int i = 0; i < n; i++)
 	{
-		for (int j = 0; j < m; j++)
+		for (int j = 0; j < n; j++)
 		{
 			fscanf(fp, "%d", &x);
 			graph[i][j] = x;
 		}
 	}
-	prims(graph, m);
+	print(graph,n);
+	prims(graph, n);
 }
