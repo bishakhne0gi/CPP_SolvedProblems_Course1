@@ -6,131 +6,106 @@
     
     SC: O(V) v-numbe of vertices
 */
-
 #include <bits/stdc++.h>
 using namespace std;
-class Queue
+int graph[20][20];
+int visited[20];
+char q[20];
+int rear = -1, front = -1;
+void enqueFunc(int n, char x)
 {
-    int *arr;
-    int cs;
-    int ms;
-    int front;
-    int rear;
-
-public:
-    Queue(int default_size = 5)
+    if (rear == -1 && front == -1)
     {
-        ms = default_size;
-        arr = new int[ms];
-        cs = 0;
-        front = 0;
-        rear = ms - 1;
+        rear ++;
+        front ++;
+        q[rear] = x;
     }
-
-    bool full()
+    else if (rear == n-1)
     {
-        return cs == ms;
+        printf("\n The queue is overflowing !!! \n");
     }
-    bool empty()
+    else
     {
-        return cs == 0;
+        rear ++;
+        q[rear] = x;
     }
-    void push(int data)
-    {
-        if (!full())
-        {
-            rear = (rear + 1) % ms;
-            arr[rear] = data;
-            cs++;
-        }
-    }
-    int frontFun()
-    {
-        if (!empty())
-            return arr[front];
-        return 0;
-    }
-    void pop()
-    {
-        if (!empty())
-        {
-            front = (front + 1) % ms;
-            cs--;
-        }
-    }
-};
-class Graph
+}
+void dequeFunc(int n)
 {
-    int V;
-    list<int> *l;
-    public:
-        Graph(int v)
+    if (rear == -1 && front == -1)
+    {
+        cout<<"\n The queue is underflowing."<<endl;
+    }
+    else if (rear == front)
+    {
+        rear = -1;
+        front = -1;
+    }
+    else
+    {
+        front ++;
+    }
+}
+void BFS (int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        visited[i] = false;
+    }
+    int v = 0;
+    char u;
+    enqueFunc(n, v+65);
+    visited[v] = true;
+    cout<<"The BFS traversal of the graph is : "<<endl;
+    while ((rear != -1 && front != -1) || front < rear)
+    {
+        u = q[front];
+        dequeFunc(n);
+        cout<<u<<"\t"<<endl;
+        for (int i = 0; i < n; i ++)
         {
-            V=v;
-            l=new list<int>[v];
-        }
-        void addEdge(int i, int j)
-        {
-            l[i].push_back(j);
-            l[j].push_back(i);
-        }
-        void printAdjList()
-        {
-            cout<<"Adjacency List: "<<endl;
-            for(int i=0; i<V; i++)
+            if (graph[u-65][i] == 1)
             {
-                cout<<i<<"->";
-                for(auto node: l[i])
+                if (visited[i] == 0)
                 {
-                    cout<<node<<" , ";
-                }
-                cout<<endl;
-            }
-        }
-        void bfs(int source)
-        {
-            Queue q;
-            bool visited[100]={false};
-            q.push(source);
-            visited[source]=true;
-            cout<<"BFS TRAVERSAL: "<<endl;
-            while(!q.empty())
-            {
-                int f=q.frontFun();
-                cout<<f<<" ";
-                q.pop();
-                for(auto nbr:l[f])
-                {
-                    if(visited[nbr]!=true)
-                    {
-                        q.push(nbr);
-                        visited[nbr]=true;
-                    }
+                    enqueFunc(n, i+65);
+                    visited[i] = 1;
                 }
             }
-            cout<<endl;
         }
-};
+    }
+}
+
+void print(int n)
+{
+    cout<<"The graph is: "<<endl;
+    for (int i = 0; i < n; i ++)
+    {
+        for (int j = 0; j < n; j ++)
+        {
+            cout<<"\t"<<graph[i][j];
+        }
+        cout<<endl;
+    }
+}
 int main()
 {
-    cout<<"Enter the number of vertices: "<<endl;
-    int n;
-    cin>>n;
-    Graph g(n);
-    int count=0;
-    cout<<"Enter the number of edges: "<<endl;
-    int m;
-    cin>>m;
-    for(int i=1; i<=m; i++)
+    FILE *fp = fopen("VE.txt", "r");
+    if (fp == NULL)
     {
-        int u,v;
-        cin>>u>>v;
-        g.addEdge(u,v);
+        cout<<" Error opening \n"<<endl;
+        exit(0);
     }
-    g.printAdjList();
-    int source;
-    cout<<"Enter the source: "<<endl;
-    cin>>source;
-    g.bfs(source);
+    int n, x;
+    fscanf(fp, "%d", &n);
+    for (int i = 0; i < n; i ++)
+    {
+        for (int j = 0; j < n; j ++)
+        {
+            fscanf(fp, "%d", &graph[i][j]);
+        }
+    }
+    print(n);
+    BFS (n);
     return 0;
 }
