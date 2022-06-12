@@ -7,7 +7,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 int graph[20][20];
-bool visited[20];
+bool visited[20]={false};
 char s[20];
 int top = -1;
 void pushFunc(char v)
@@ -35,15 +35,12 @@ void popFunc()
 }
 void DFS(int n)
 {
-    for (int i = 0; i < n; i++)
-    {
-        visited[i] = false;
-    }
+    visited[0] = true;
     int v = 0;
     char u;
     pushFunc(v + 65);
-    visited[v] = true;
-    cout<<"The DFS traversal of the graph is : "<<endl;    while (top != -1)
+    cout<<"The DFS traversal of the graph is : "<<endl;   
+     while (top != -1)
     {
         u = s[top];
         popFunc();

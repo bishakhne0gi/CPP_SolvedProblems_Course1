@@ -9,10 +9,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 int graph[20][20];
-bool visited[20];
+bool visited[20]={false};
 char q[20];
 int rear = -1, front = -1;
-void enqueFunc(int n, char x)
+void pushFunc(int n, char x)
 {
     if (rear == -1 && front == -1)
     {
@@ -30,7 +30,7 @@ void enqueFunc(int n, char x)
         q[rear] = x;
     }
 }
-void dequeFunc(int n)
+void popFunc()
 {
     if (rear == -1 && front == -1)
     {
@@ -48,19 +48,15 @@ void dequeFunc(int n)
 }
 void BFS (int n)
 {
-    for (int i = 0; i < n; i++)
-    {
-        visited[i] = false;
-    }
+    visited[0] = true;
     int v = 0;
     char u;
-    enqueFunc(n, v+65);
-    visited[v] = true;
+    pushFunc(n,v + 65);
     cout<<"The BFS traversal of the graph is : "<<endl;
     while ((rear != -1 && front != -1) || front < rear)
     {
         u = q[front];
-        dequeFunc(n);
+        popFunc();
         cout<<u<<"\t"<<endl;
         for (int i = 0; i < n; i ++)
         {
@@ -68,7 +64,7 @@ void BFS (int n)
             {
                 if (visited[i] == false)
                 {
-                    enqueFunc(n, i+65);
+                    pushFunc(n, i+65);
                     visited[i] = true;
                 }
             }
