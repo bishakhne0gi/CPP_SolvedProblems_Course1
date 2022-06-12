@@ -37,7 +37,7 @@ void DFS(int n)
 {
     for (int i = 0; i < n; i++)
     {
-        visited[i] = 0;
+        visited[i] = false;
     }
     int v = 0;
     char u;

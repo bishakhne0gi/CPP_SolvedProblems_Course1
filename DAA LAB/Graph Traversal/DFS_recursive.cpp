@@ -3,7 +3,6 @@ using namespace std;
 int graph[20][20];
 bool visited[20];
 int top=-1;
-
 void initialize()
 {
     for(int i=0;i<20;i++)
@@ -11,7 +10,6 @@ void initialize()
         visited[i]=false;
     }
 }
-
 void dfs(int a, int n){
 	visited[a]=true;
     char u=a+65;
