@@ -53,7 +53,6 @@ void dijkstra(int graph[20][20], int src, int n)
 		{
 			if (graph[u][k] && sptSet[k] == false && dist[u] != INT_MAX && dist[u] + graph[u][k] < dist[k])
 			{
-
 				dist[k] = dist[u] + graph[u][k];
 			}
 		}

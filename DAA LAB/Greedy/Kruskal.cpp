@@ -5,8 +5,6 @@
 */
 #include <bits/stdc++.h>
 using namespace std;
-#include <bits/stdc++.h>
-using namespace std;
 class DSU
 {
     int *parent;
@@ -27,9 +25,7 @@ class DSU
         {
             if(parent[i]==-1)
                 return i;
-            int p=find(parent[i]);
-            parent[i]=p;
-            return p;
+            return parent[i]=find(parent[i]);
         }
         void unite(int u, int v)
         {
@@ -95,14 +91,19 @@ class Graph
             //initialise DSU
             DSU s(V);
             int ans=0;
+            cout<<"Edges \t"<<"Weights"<<endl;
             for(int i=0; i<e; i++)
             {
                 int w=edgelist[i][0];
                 int x= edgelist[i][1];
                 int y= edgelist[i][2];
+                
                 if(s.find(x)!=s.find(y))
                 {
                     s.unite(x,y);
+                    char u=x+65;
+                    char v=y+65;
+                    cout<<u<<"---"<<v<<"\t"<<w<<endl;
                     ans+=w;
                 }
             }

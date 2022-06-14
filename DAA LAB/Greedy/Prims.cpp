@@ -52,11 +52,12 @@ void prims(int graph[20][20], int n)
 	{
 		int mini = INT_MAX, u;
 
-		for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++)
 		{
-			if (mstset[i] == false && key[i] < mini)
+			if (mstset[j] == false && key[j] < mini)
 			{
-				mini = key[i], u = i;
+				mini = key[j];
+				u = j;
 			}
 		}
 		mstset[u] = true;
