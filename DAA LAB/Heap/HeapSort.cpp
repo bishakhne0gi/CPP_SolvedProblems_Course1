@@ -28,13 +28,14 @@ void heapsort(int arr[], int n)
     }
     for (int i = n - 1; i >= 0; i--)
     {
-        swap(arr[i], arr[0]);
+        
         cout << "Steps: " << endl;
         for (int j = 0; j < n; j++)
         {
             cout << arr[j] << "  ";
         }
         cout << endl;
+        swap(arr[i], arr[0]);
         heapify(arr, i, 0);
     }
 }
