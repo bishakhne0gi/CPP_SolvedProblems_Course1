@@ -1,90 +1,61 @@
-/*
-    TC: O(n2)
-    SC: O(n)
-*/
-
 #include <bits/stdc++.h>
+#define V 100
 using namespace std;
-
-bool canPlace(int board[][20], int n, int x, int y)
+int counter = 0;
+void print(int n, int chessboard[V])
 {
-    //column
-    for(int k=0; k<x; k++)
+    for (int i = 1; i <= n; i++)
     {
-        if(board[k][y]==1)
+        for (int j = 1; j <= n; j++)
         {
-            return false;
+            if (chessboard[i] == j)
+                cout<<"Q ";
+            else
+                cout<<"_ ";
         }
+        cout <<endl;
     }
-    //Left Diagonal
-    int i=x;
-    int j=y;
-    while(i>=0 && j>=0)
+}
+
+bool safePlace(int k, int i, int chessboard[V])
+{
+    for (int j = 1; j <= k - 1; j++)
     {
-        if(board[i][j]==1)
+        if (chessboard[j] == i || abs(j - k) == abs(chessboard[j] - i))
         {
+            //if present in same in col or not
             return false;
         }
-        i--;
-        j--;
-    }
-    //Right Diagonal
-    i=x;
-    j=y;
-    while(i>=0 && j<n)
-    {
-        if(board[i][j]==1)
-        {
-            return false;
-        }
-        i--;
-        j++;
     }
     return true;
 }
-void printBoard(int n, int board[][20])
+
+void nQueen(int k, int n, int chessboard[V])
 {
-    for(int i=0; i<n; i++)
-    {
-        for(int j=0; j<n; j++)
-        {
-            cout<<board[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-}
-bool solveNQueen(int n, int board[][20], int i)
-{
-    //base case
-    if(i==n)
-    {
-        printBoard(n,board);
-        return true;
-    }
-    //recursive case
-    for(int j=0; j<n; j++)
-    {
-        //whether current i,j is safe or not
-        if(canPlace(board,n,i,j))
-        {
-            board[i][j]=1;
-            bool success = solveNQueen(n,board,i+1);
-            if(success==true)
+    for (int i = 1; i <= n; i++)
+    { // column traversal
+        if (safePlace(k, i, chessboard)==true)
+        {// k is the row
+            chessboard[k] = i;
+            if (k == n)
             {
-                return true;
+                counter++;
+                cout << "\n solution :" << counter << " " << endl;
+                print(n, chessboard);
             }
-            //backtrack
-            board[i][j]=0;
+            else
+            {
+                nQueen(k + 1, n, chessboard);
+            }
         }
     }
-    return false;
 }
+
 int main()
 {
-    int board[20][20]={0};
-    cout<<"Enter the value of n: "<<endl;
+    cout << "enters the rows of the chessboard : ";
     int n;
-    cin>>n;
-    solveNQueen(n,board,0);
-    return 0;
+    cin >> n;
+    int chessBoard[V];
+    nQueen(1, n, chessBoard);
 }

@@ -1,15 +1,16 @@
 /*
     TC:
-    Worst case when the array is sorted: o(n2)
+    Worst case when the array is sorted or all equal: o(n2)
     Best case: O(n logn)
     SC:  O(n)
 */
+
 #include <bits/stdc++.h>
 using namespace std;
 int a[100];
 int n;
 int partition(int s, int e)
-{
+{//Lomuto Partition
     int i = s - 1;
     int pivot = a[e];
     for (int j = s; j < e; j++)
