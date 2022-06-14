@@ -4,18 +4,6 @@
 */
 #include <bits/stdc++.h>
 using namespace std;
-int minDistance(int dist[], bool sptSet[], int m)
-{
-
-	int min = INT_MAX, min_index;
-
-	for (int v = 0; v < m; v++)
-		if (sptSet[v] == false && dist[v] <= min)
-			min = dist[v], min_index = v;
-
-	return min_index;
-}
-
 void printSolution(int dist[], int m)
 {
 	cout << "Vertex \t Distance from Source(S)" << endl;
