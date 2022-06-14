@@ -65,7 +65,7 @@ int main()
 {
 	cout << "Source--> S" << endl;
 
-	FILE *fp = fopen("abc.txt", "r");
+	FILE *fp = fopen("dij.txt", "r");
 	if (fp == NULL)
 	{
 		printf("\n Cannot open file");
