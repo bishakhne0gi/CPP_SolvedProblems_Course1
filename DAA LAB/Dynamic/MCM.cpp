@@ -62,12 +62,29 @@ int main()
 
     int dp[100][100];
     int brackets[100][100];
-
     int res = mCm(mat, brackets, dp, n);
     char name = 'A';
     cout <<endl;
     cout << "multiplication pattern will be: "<<endl;
     print_optimal_parenthesis(1, n - 1, brackets, name);
     cout<< "number of operations needed for this matrix multiplications are : "<<res<<endl;
+    cout<<"M table"<<endl;
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<n; j++)
+        {
+            cout<<dp[i][j]<<"\t";
+        }
+        cout<<endl;
+    }
+    cout<<"S table"<<endl;
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<n; j++)
+        {
+            cout<<brackets[i][j]<<" ";
+        }
+        cout<<endl;
+    }
     return 0;
 }
