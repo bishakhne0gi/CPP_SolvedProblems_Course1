@@ -47,14 +47,21 @@ void merge(int s, int e)
     }
     return;
 }
-void mergesort(int s,int e)
+void mergesort(int s,int e, int n)
 {
     if(s>=e)
         return;
     int mid=(s+e)/2;
-    mergesort(s,mid);
-    mergesort(mid+1,e);
-    return merge(s,e);
+    
+    mergesort(s,mid,n);
+    mergesort(mid+1,e,n);
+    merge(s,e);
+    cout<<"Steps: "<<endl;
+    for(int i=0; i<n; i++)
+    {
+        cout<<a[i]<<"  ";
+    }
+    cout<<endl;
 }
 int main()
 {
@@ -72,8 +79,9 @@ int main()
         cout << a[i] << "  ";
     }
     cout << endl;
+    
+    mergesort(0,n-1,n);
     cout << "Sorted Array" << endl;
-    mergesort(0,n-1);
     for (int i = 0; i < n; i++)
     {
         cout << a[i] << "  ";

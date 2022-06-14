@@ -7,6 +7,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 int a[100];
+int n;
 int partition(int s, int e)
 {
     int i = s - 1;
@@ -22,13 +23,19 @@ int partition(int s, int e)
     swap(a[i + 1], a[e]);
     return i + 1;
 }
-void quicksort(int s, int e)
+void quicksort(int s, int e, int n)
 {
     if (s >= e)
         return;
     int p = partition(s, e);
-    quicksort(s, p - 1); // left
-    quicksort(p + 1, e); // right
+    cout<<"Steps: "<<endl;
+    for(int i=0; i<n; i++)
+    {
+        cout<<a[i]<<"  ";
+    }
+    cout<<endl;
+    quicksort(s, p - 1,n); // left
+    quicksort(p + 1, e,n); // right
 }
 int main()
 {
@@ -40,14 +47,14 @@ int main()
         cin >> a[i];
     }
     cout << endl;
-    cout << "Unsorted Array" << endl;
+    cout << "Unsorted Array: " << endl;
     for (int i = 0; i < n; i++)
     {
         cout << a[i] << "  ";
     }
     cout << endl;
-    cout << "Sorted Array" << endl;
-    quicksort(0, n);
+    quicksort(0, n-1, n);
+    cout << "Sorted Array: " << endl;
     for (int i = 0; i < n; i++)
     {
         cout << a[i] << "  ";
