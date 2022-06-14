@@ -1,15 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 int graph[20][20];
-bool visited[20];
+bool visited[20]={false};
 int top=-1;
-void initialize()
-{
-    for(int i=0;i<20;i++)
-    {
-        visited[i]=false;
-    }
-}
 void dfs(int a, int n){
 	visited[a]=true;
     char u=a+65;
@@ -35,7 +28,7 @@ void print(int n)
 int main()
 {
     FILE *fp;
-    fp=fopen("VE.txt","r");
+    fp=fopen("dfs.txt","r");
     if (fp == NULL)
     { 
         printf("\nError to open the file\n");

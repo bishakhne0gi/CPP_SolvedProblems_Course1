@@ -86,7 +86,7 @@ void print(int n)
 }
 int main()
 {
-    FILE *fp = fopen("VE.txt", "r");
+    FILE *fp = fopen("bfs.txt", "r");
     if (fp == NULL)
     {
         cout<<" Error opening \n"<<endl;

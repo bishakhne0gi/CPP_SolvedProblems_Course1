@@ -8,9 +8,9 @@
 using namespace std;
 int graph[20][20];
 bool visited[20]={false};
-char s[20];
+int s[20];
 int top = -1;
-void pushFunc(int n, char x)
+void pushFunc(int n, int x)
 {
     if (top == n-1)
     {
@@ -38,20 +38,20 @@ void DFS(int n)
     visited[0] = true;
     int v = 0;
     char u;
-    pushFunc(n,v + 65);
+    pushFunc(n,v);
     cout<<"The DFS traversal of the graph is : "<<endl;   
      while (top != -1)
     {
         u = s[top];
         popFunc();
-        cout<<u<<"\t"<<endl;
+        cout<<u+1<<"->";
         for (int i = 0; i < n; i ++)
         {
-            if (graph[u-65][i] == 1)
+            if (graph[u][i] == 1)
             {
                 if (visited[i] == false)
                 {
-                    pushFunc(n,i + 65);
+                    pushFunc(n,i);
                     visited[i] = true;
                 }
             }
@@ -72,7 +72,7 @@ void print(int n)
 }
 int main()
 {
-    FILE *fp = fopen("VE.txt", "r");
+    FILE *fp = fopen("dfs.txt", "r");
     if (fp == NULL)
     {
         cout<<" Error opening \n"<<endl;
