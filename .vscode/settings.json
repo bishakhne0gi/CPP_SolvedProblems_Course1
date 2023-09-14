@@ -3,6 +3,12 @@
         "*.ejs": "html",
         "iostream": "cpp",
         "set": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "vector": "cpp",
+        "xstring": "cpp",
+        "queue": "cpp",
+        "cmath": "cpp"
     }
 }

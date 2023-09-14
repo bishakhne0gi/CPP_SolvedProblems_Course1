@@ -39,10 +39,10 @@ class Graph
 
             }
         }
-        for(int i=0; i<V; i++)
-        {
-            cout<<"Node  "<<i<<"is at Dist "<<distance[i]<<endl;
-        }
+        // for(int i=0; i<V; i++)
+        // {
+        //     cout<<"Node  "<<i<<"is at Dist "<<distance[i]<<endl;
+        // }
         return distance[dest];
     }
 };
@@ -62,15 +62,6 @@ int main()
         cin>>u>>fin>>w;
         g.addEdge(u,fin,w);
     }
-    // g.addEdge(0,1,7);
-    // g.addEdge(0,3,8);
-    // g.addEdge(1,3,3);
-    // g.addEdge(1,2,6);
-    // g.addEdge(3,2,4);
-    // g.addEdge(3,4,3);
-    // g.addEdge(2,4,2);
-    // g.addEdge(2,5,5);
-    // g.addEdge(4,5,2);
     cout<<"Source: "<<endl;
     int source;
     cin>>source;

@@ -78,12 +78,10 @@ int main()
     {
 		color[i] = 0;
     }
-
 	if (!graphColoring(graph, m, 0, color,n) && flag==false)
     {
 		cout << "Solution does not exist";
     }
-
     cout<<"Number of solution "<<c<<endl;
 	return 0;
 }
